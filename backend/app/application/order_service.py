@@ -22,7 +22,6 @@ class OrderService:
             raise UserNotFoundError(user_id)
         order = Order(user_id=user_id)
         await self.order_repo.save(order)
-        #commit
         return order
 
     # TODO: Реализовать get_order(order_id) -> Order
@@ -44,7 +43,6 @@ class OrderService:
         order_item = OrderItem(product_name=product_name, price=price, quantity=quantity, order_id=order_id)
         order.add_item(product_name=product_name, price=price, quantity=quantity)
         await self.order_repo.save(order)
-        #commit
         return order_item
 
 
@@ -58,7 +56,6 @@ class OrderService:
         if order.status == OrderStatus.CREATED:
             order.pay()
         await self.order_repo.save(order)
-        #commit
         return order
 
     # TODO: Реализовать cancel_order(order_id) -> Order
@@ -68,7 +65,6 @@ class OrderService:
             raise OrderNotFoundError(order_id)
         order.cancel()
         await self.order_repo.save(order)
-        #commit
         return order
 
     # TODO: Реализовать ship_order(order_id) -> Order
@@ -78,7 +74,6 @@ class OrderService:
             raise OrderNotFoundError(order_id)
         order.ship()
         await self.order_repo.save(order)
-        #commit
         return order
 
     # TODO: Реализовать complete_order(order_id) -> Order
@@ -88,7 +83,6 @@ class OrderService:
             raise OrderNotFoundError(order_id)
         order.complete()
         await self.order_repo.save(order)
-        #commit
         return order
 
     # TODO: Реализовать list_orders(user_id: Optional) -> List[Order]

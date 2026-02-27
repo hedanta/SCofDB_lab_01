@@ -24,7 +24,6 @@ class UserService:
         
         user = User(email=email, name=name)
         await self.repo.save(user)
-        #commit 
         return user
 
 
